@@ -1,18 +1,16 @@
-import React, { useState } from "react";
-import Admin from "./Admin";
-import User from "./User";
+// import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Home from "./components/Home";
+import User from "./components/User";
+import Admin from "./components/Admin";
 
-const App = () => {
-  const [tableData, setTableData] = useState([]);
-
+function App() {
   return (
     <div>
-      {/* Pass tableData and setTableData as props to Admin component */}
-      <Admin tableData={tableData} setTableData={setTableData} />
-      {/* Pass tableData as a prop to User component */}
-      <User tableData={tableData} />
+      <Navbar />
+      <Home />
     </div>
   );
-};
+}
 
 export default App;

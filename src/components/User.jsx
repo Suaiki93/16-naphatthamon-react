@@ -1,7 +1,6 @@
-import React from "react";
-import Admin from "./Admin";
+// import React from "react";
 
-const User = ({ tableData }) => {
+const User = () => {
   return (
     <div className="w-full max-w-4xl">
       <p className="text-gray-500 mb-2">Table 1</p>
@@ -20,19 +19,21 @@ const User = ({ tableData }) => {
           </tr>
         </thead>
         <tbody>
-          {tableData.map((data, index) => (
-            <tr key={index}>
-              <td className="px-6 py-4 border-b border-gray-200">
-                {data.name}
-              </td>
-              <td className="px-6 py-4 border-b border-gray-200">
-                {data.lastname}
-              </td>
-              <td className="px-6 py-4 border-b border-gray-200">
-                {data.position}
-              </td>
-            </tr>
-          ))}
+          <tr>
+            <td className="px-6 py-4 border-b border-gray-200"></td>
+            <td className="px-6 py-4 border-b border-gray-200"></td>
+            <td className="px-6 py-4 border-b border-gray-200"></td>
+          </tr>
+          <tr>
+            <td className="px-6 py-4 border-b border-gray-200"></td>
+            <td className="px-6 py-4 border-b border-gray-200"></td>
+            <td className="px-6 py-4 border-b border-gray-200"></td>
+          </tr>
+          <tr>
+            <td className="px-6 py-4 border-b border-gray-200"></td>
+            <td className="px-6 py-4 border-b border-gray-200"></td>
+            <td className="px-6 py-4 border-b border-gray-200"></td>
+          </tr>
         </tbody>
       </table>
     </div>

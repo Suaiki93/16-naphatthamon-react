@@ -1,20 +1,26 @@
 import React, { useState } from "react";
 import Navbar from "./Navbar";
-import User from "./User"; // Import the User component
-import Admin from "./Admin"; // Import the Admin component
+import User from "./User";
+import Admin from "./Admin";
 
 const Home = () => {
-  const [showUser, setShowUser] = useState(false); // State to manage whether to show User component
-  const [showAdmin, setShowAdmin] = useState(false); // State to manage whether to show Admin component
+  const [showUser, setShowUser] = useState(false);
+  const [showAdmin, setShowAdmin] = useState(false);
+  const [tableData, setTableData] = useState([]); // State to manage table data
 
   const handleUserClick = () => {
-    setShowUser(true); // Set showUser state to true when the User button is clicked
-    setShowAdmin(false); // Make sure to hide the Admin component when showing the User component
+    setShowUser(true);
+    setShowAdmin(false);
   };
 
   const handleAdminClick = () => {
-    setShowUser(false); // Make sure to hide the User component when showing the Admin component
-    setShowAdmin(true); // Set showAdmin state to true when the Admin button is clicked
+    setShowUser(false);
+    setShowAdmin(true);
+  };
+
+  const handleFormSubmit = (formData) => {
+    setTableData([tableData, formData]);
+    setShowUser(true); // Show the User component after saving data in Admin
   };
 
   return (
@@ -24,26 +30,26 @@ const Home = () => {
         <h1 className="text-4xl font-bold mb-8">
           Generation Thailand
           <br />
-          React - Assessment
+          {showUser ? "Home - User Sector" : ""}
+          {showAdmin ? "Home - Admin Sector" : ""}
+          {!showAdmin && !showUser ? "React - Assesment" : ""}
         </h1>
         <div className="flex space-x-4">
           <button
             className="bg-white shadow-md rounded-md px-6 py-3 hover:bg-gray-100"
-            onClick={handleUserClick} // Add onClick event to call handleUserClick function
+            onClick={handleUserClick}
           >
             User Home Sector
           </button>
           <button
             className="bg-white shadow-md rounded-md px-6 py-3 hover:bg-gray-100"
-            onClick={handleAdminClick} // Add onClick event to call handleAdminClick function
+            onClick={handleAdminClick}
           >
             Admin Home Sector
           </button>
         </div>
-        {showUser && <User />}{" "}
-        {/* Render User component if showUser state is true */}
-        {showAdmin && <Admin />}{" "}
-        {/* Render Admin component if showAdmin state is true */}
+        {showUser && <User tableData={tableData} />}
+        {showAdmin && <Admin onFormSubmit={handleFormSubmit} />}
       </div>
     </>
   );
